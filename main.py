@@ -88,6 +88,12 @@ def main(anchors, labels = None, model_addr="/sd/m.kmodel", sensor_window=input_
                     pos = obj.rect()
                     img.draw_rectangle(pos)
                     img.draw_string(pos[0], pos[1], "%s : %.2f" %(labels[obj.classid()], obj.value()), scale=2, color=(255, 0, 0))
+                     ##activating triger
+                    Servo ( S1 , 180 )
+                    time.sleep(3)
+                    #0 degree
+                    Servo ( S1 , 0 )
+                    time.sleep(1)
                 comm.send_detect_result(objects, labels)
             img.draw_string(0, 200, "t:%dms" %(t), scale=2, color=(255, 0, 0))
             lcd.display(img)
